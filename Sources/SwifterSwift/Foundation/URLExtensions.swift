@@ -149,4 +149,26 @@ public extension URL {
 
 }
 
+// MARK: - Methods
+extension URL: ExpressibleByStringLiteral {
+    /// SwifterSwift: Create a URL from string literal
+       ///        var url:URL = "https://google.com"
+       ///
+       /// - Parameter value: The string literal from which the URL is to be constructed.
+    public init(stringLiteral value: String) {
+        guard let url = URL(string: value) else {
+            fatalError("\(value) is an invalid url")
+        }
+        self = url
+    }
+
+    public init(extendedGraphemeClusterLiteral value: String) {
+        self.init(stringLiteral: value)
+    }
+
+    public init(unicodeScalarLiteral value: String) {
+        self.init(stringLiteral: value)
+    }
+}
+
 #endif
